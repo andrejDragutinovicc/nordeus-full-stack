@@ -2,13 +2,13 @@ package dto;
 
 import engine.BattleState;
 import model.move.Move;
+import model.move.MoveName;
 
 public class Request {
 
 	
 	private BattleState battleState;
-	private String monsterMove;
-	private String heroMove;
+	private MoveName heroMove;
 	
 	
 	public BattleState getBattleState() {

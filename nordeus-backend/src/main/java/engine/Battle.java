@@ -76,6 +76,7 @@ public class Battle {
 		int rez = 0;
 		if(move.getMoveType()== MoveType.PHYSICAL) {
 			rez = attacker.getAttackPoints() - deffrnder.getDeffensivePoints();
+//			DODATI move.getValue u formulu
 		}
 		else {
 			rez = attacker.getMagicDamage()- deffrnder.getMagicResist();

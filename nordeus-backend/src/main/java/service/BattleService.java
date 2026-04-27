@@ -17,9 +17,9 @@ public class BattleService {
 	public Response playMove(Request request) {
 		
 		Move heroMove = GameConfig.getMove(request.getHeroMove());
-		Move mosterMove = GameConfig.getMove(request.getMonsterMove());
+//		Move mosterMove = GameConfig.getMove(request.getMonsterMove());
 		
-		return  engine.runMoves(request.getBattleState(), heroMove, mosterMove);
+		return  engine.runMoves(request.getBattleState(), heroMove);
 		
 		
 	}	

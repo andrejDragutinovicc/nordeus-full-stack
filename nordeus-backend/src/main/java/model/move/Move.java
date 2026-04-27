@@ -13,6 +13,20 @@ public class Move {
 	public MoveName getName() {
 		return name;
 	}
+	
+	
+
+	public Move(int id, MoveName name, MoveType moveType, MoveEffect moveEffect, int value, int duration) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.moveType = moveType;
+		this.moveEffect = moveEffect;
+		this.value = value;
+		this.duration = duration;
+	}
+
+
 
 	public void setName(MoveName name) {
 		this.name = name;
