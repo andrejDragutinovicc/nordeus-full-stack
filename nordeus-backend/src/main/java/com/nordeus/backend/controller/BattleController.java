@@ -1,14 +1,19 @@
-package controller;
+package com.nordeus.backend.controller;
+
+import java.util.List;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.nordeus.backend.service.BattleService;
+
 import dto.Request;
 import dto.Response;
+import dto.StartDto;
 import engine.BattleState;
-import service.BattleService;
+import model.move.Move;
 
 @RestController
 @RequestMapping("/api/game")
@@ -28,5 +33,11 @@ public class BattleController {
 		return service.playMove(request);
 		
 	}
+    @PostMapping("/start")
+    public StartDto getStart(){
+    	
+    	return service.start();
+    	
+    }
 	
 }

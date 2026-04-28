@@ -18,25 +18,25 @@ public class Character {
 	private int id;
 	private String name;
 	private Stats stats;
-	private int courentHealth;
+	private int currentHealth;
 	private List<MoveName> moves;
 //	private List<Effects> effects;
 	
-	public int getDeffensivePoints() {
-		return 0;
+	public double DeffensivePoints() {
+		return 0.5;
 	}
 	
-	public int getMagicDamage() {
-		return 0;
+	public double MagicDamage() {
+		return 1;
 	}
 	
-	public int getMagicResist() {
-		return 0;
+	public double MagicResist() {
+		return 0.5;
 	}
 	
 	
-	public int getAttackPoints() {
-		return 0;
+	public double AttackPoints() {
+		return 2;
 	}
 	
 	
@@ -58,12 +58,16 @@ public class Character {
 	public void setStats(Stats stats) {
 		this.stats = stats;
 	}
-	public int getCourentHealth() {
-		return courentHealth;
+	
+	
+	public int getCurrentHealth() {
+		return currentHealth;
 	}
-	public void setCourentHealth(int courentHealth) {
-		this.courentHealth = courentHealth;
+
+	public void setCurrentHealth(int currentHealth) {
+		this.currentHealth = currentHealth;
 	}
+
 	public List<MoveName> getMoves() {
 		return moves;
 	}
@@ -73,9 +77,9 @@ public class Character {
 
 	public void loverHP(int rez) {
 
-		courentHealth-=rez;
+		currentHealth = currentHealth - rez;
 		
-//	}
+	}
 //	public List<BattleStep> applyEffect() {
 //		List<BattleStep> l = new ArrayList<BattleStep>();
 //		for (Effects e : effects) {
@@ -87,35 +91,45 @@ public class Character {
 //	}
 
 	public Move calculateMove() {
+		Move rezultat;
 		List<Move> m = new ArrayList<Move>();
 		
 		for (MoveName moveName : moves) {
 			m.add(GameConfig.getMove(moveName));
 		}
-		double healtPersentage = courentHealth/stats.getHealth();
+		double healtPersentage = (double)currentHealth/stats.getHealth();
 		double x = Math.random();
+		
+		System.out.println("x = "+ x+"healtPersentage = " +healtPersentage);
 		
 		if(x-0.1>healtPersentage) {
 			List<Move> heal = m.stream().filter( p -> p.getMoveEffect()== MoveEffect.HEAL).collect(Collectors.toList());
 			
 			Random rand = new Random();
 			int index = rand.nextInt(heal.size());
-			return heal.get(index);
+			rezultat =  heal.get(index);
 			
 		}
 		else if(x/healtPersentage<0.8) {
 			List<Move> dmg = m.stream().filter( p -> p.getMoveEffect()== MoveEffect.DAMAGE).collect(Collectors.toList());
 			Random rand = new Random();
 			int index = rand.nextInt(dmg.size());
-			return dmg.get(index);
+			rezultat =  dmg.get(index);
 		}else {
 			List<Move> other = m.stream().filter( p -> p.getMoveEffect()!= MoveEffect.DAMAGE && p.getMoveEffect()!= MoveEffect.HEAL).collect(Collectors.toList());
 			Random rand = new Random();
 			int index = rand.nextInt(other.size());
-			return other.get(index);
+			rezultat =  other.get(index);
 		}
+		System.out.println(rezultat.getName());
+		return rezultat;
 		
-		return null;
+	}
+
+	@Override
+	public String toString() {
+		return "Character [id=" + id + ", name=" + name + ", stats=" + stats + ", currentHealth=" + currentHealth
+				+ ", moves=" + moves + "]";
 	}
 	
 

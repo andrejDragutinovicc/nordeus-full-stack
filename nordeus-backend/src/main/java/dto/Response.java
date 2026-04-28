@@ -1,5 +1,6 @@
 package dto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import engine.BattleState;
@@ -10,7 +11,7 @@ public class Response {
 
 	private BattleState battleState;
 	
-	private List<BattleStep> battleSteps;
+	private List<BattleStep> battleSteps = new ArrayList<BattleStep>();
 
 	public void addStep(BattleStep bs) {
 		battleSteps.add(bs);

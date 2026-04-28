@@ -17,16 +17,13 @@ public class Request {
 	public void setBattleState(BattleState battleState) {
 		this.battleState = battleState;
 	}
-	public String getMonsterMove() {
-		return monsterMove;
-	}
-	public void setMonsterMove(String monsterMove) {
-		this.monsterMove = monsterMove;
-	}
-	public String getHeroMove() {
+
+
+	
+	public MoveName getHeroMove() {
 		return heroMove;
 	}
-	public void setHeroMove(String heroMove) {
+	public void setHeroMove(MoveName heroMove) {
 		this.heroMove = heroMove;
 	}
 	

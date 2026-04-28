@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import model.Hero;
 import model.move.*;
 
 public class GameConfig {
@@ -50,5 +51,16 @@ public class GameConfig {
 	    	MoveName mn = MoveName.valueOf(name);
 	        return moves.get(name);
 	    }
+		public static Map<MoveName, Move> getMoves() {
+			return moves;
+		}
+		public static Hero getStartingHero() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		public static List<Character> GetStartingMonsters() {
+			// TODO Auto-generated method stub
+			return null;
+		}
 	    
 }

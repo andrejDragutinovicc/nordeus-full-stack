@@ -12,12 +12,14 @@ public class Battle {
 
 	public Response runMoves(BattleState bs, Move heroMove) {
 		Response rs = new Response();
+		System.out.println(bs.getHero());
+		System.out.println(bs.getMonster());
 		
 		Move monsterMove = bs.getMonster().calculateMove();
 		
 		rs.addStep(applyMove(bs.getHero(),bs.getMonster(), heroMove));
 
-		if (bs.getMonster().getCourentHealth() <= 0) {
+		if (bs.getMonster().getCurrentHealth() <= 0) {
 			return rs;
 		}
 		
@@ -26,7 +28,7 @@ public class Battle {
 //		List<BattleStep> p = bs.getHero().applyEffect();
 		
 		
-		
+		rs.setBattleState(bs);
 		
 		
 		return rs;
@@ -50,11 +52,14 @@ public class Battle {
 		}
 		case HEAL: {
 			step.setApplyTo(attacker.getName());
-			return applyHEAL(attacker, deffrnder, move);
+//			return applyHEAL(attacker, deffrnder, move);
+			return step;
+			
 		}
 		case BUFF: {
 			step.setApplyTo(attacker.getName());
-			return applyBUFF(attacker, deffrnder, move);
+//			return applyBUFF(attacker, deffrnder, move);
+			return step;
 		}
 		default:
 			throw new IllegalArgumentException("Unexpected value:");
@@ -63,7 +68,7 @@ public class Battle {
 	}
 
 	private BattleStep applyBUFF(Character attacker, Character deffrnder, Move move) {
-		return null;
+		return new BattleStep();
 
 	}
 
@@ -75,14 +80,16 @@ public class Battle {
 	private int applyDAMAGE(Character attacker, Character deffrnder, Move move) {
 		int rez = 0;
 		if(move.getMoveType()== MoveType.PHYSICAL) {
-			rez = attacker.getAttackPoints() - deffrnder.getDeffensivePoints();
+			rez = (int) ((attacker.AttackPoints() - deffrnder.DeffensivePoints())*move.getValue());
 //			DODATI move.getValue u formulu
+//			deffrnder.setCourentHealth(deffrnder.getCourentHealth()-rez);
 		}
 		else {
-			rez = attacker.getMagicDamage()- deffrnder.getMagicResist();
+			rez = (int) (attacker.MagicDamage()- deffrnder.MagicResist());
+//			deffrnder.setCourentHealth(deffrnder.getCourentHealth()-rez);
 		}
 		deffrnder.loverHP(rez);
-		
+		System.out.println(deffrnder.toString());
 		return rez;
 
 	}
