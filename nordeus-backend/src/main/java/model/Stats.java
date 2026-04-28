@@ -8,6 +8,16 @@ public class Stats {
 	private int magic;
 	
 	
+	
+	
+	
+	public Stats(int health, int defense, int attack, int magic) {
+		super();
+		this.health = health;
+		this.defense = defense;
+		this.attack = attack;
+		this.magic = magic;
+	}
 	public int getHealth() {
 		return health;
 	}

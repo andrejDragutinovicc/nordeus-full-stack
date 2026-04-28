@@ -5,7 +5,10 @@ import java.util.List;
 import java.util.Map;
 
 import model.Hero;
+import model.Stats;
 import model.move.*;
+import model.Character;
+
 
 public class GameConfig {
 	
@@ -49,18 +52,94 @@ public class GameConfig {
 	    public static Move getMove(String name) {
 	    	
 	    	MoveName mn = MoveName.valueOf(name);
-	        return moves.get(name);
+	        return moves.get(mn);
 	    }
 		public static Map<MoveName, Move> getMoves() {
 			return moves;
 		}
 		public static Hero getStartingHero() {
-			// TODO Auto-generated method stub
-			return null;
+
+		    Stats stats = new Stats(100,15,10,8);
+//		    stats.setHealth(100);
+//		    stats.setAttack(15);
+//		    stats.setDefense(10);
+//		    stats.setMagic(8);
+
+		    Hero hero = new Hero();
+		    hero.setId(1);
+		    hero.setName("Knight");
+		    hero.setStats(stats);
+		    hero.setCurrentHealth(stats.getHealth());
+		    hero.setMoves(List.of(
+		            MoveName.SLASH,
+		            MoveName.HEAVY_STRIKE,
+		            MoveName.HEAL
+		    ));
+		    hero.setLevel(1);
+		    hero.setXp(0);
+		    hero.setUpgradePoints(0);
+
+		    return hero;
 		}
-		public static List<Character> GetStartingMonsters() {
-			// TODO Auto-generated method stub
-			return null;
+		public static List<model.Character> getStartingMonsters() {
+
+		    // 1. Goblin (lak)
+		    Character goblin = new Character();
+		    goblin.setId(1);
+		    goblin.setName("Goblin");
+		    goblin.setStats(new Stats(80, 5, 10, 3));
+		    goblin.setCurrentHealth(80);
+		    goblin.setMoves(List.of(
+		            MoveName.SLASH,
+		            MoveName.QUICK_STAB
+		    ));
+
+		    // 2. Goblin Mage
+		    Character mage = new Character();
+		    mage.setId(2);
+		    mage.setName("Goblin Mage");
+		    mage.setStats(new Stats(70, 4, 8, 12));
+		    mage.setCurrentHealth(70);
+		    mage.setMoves(List.of(
+		            MoveName.FIREBALL,
+		            MoveName.HEAL
+		    ));
+
+		    // 3. Spider
+		    Character spider = new Character();
+		    spider.setId(3);
+		    spider.setName("Giant Spider");
+		    spider.setStats(new Stats(90, 8, 14, 2));
+		    spider.setCurrentHealth(90);
+		    spider.setMoves(List.of(
+		            MoveName.QUICK_STAB,
+		            MoveName.HEAVY_STRIKE
+		    ));
+
+		    // 4. Orc
+		    Character orc = new Character();
+		    orc.setId(4);
+		    orc.setName("Orc Warrior");
+		    orc.setStats(new Stats(110, 12, 18, 2));
+		    orc.setCurrentHealth(110);
+		    orc.setMoves(List.of(
+		            MoveName.HEAVY_STRIKE,
+		            MoveName.SLASH
+		    ));
+
+		    // 5. Dragon (boss)
+		    Character dragon = new Character();
+		    dragon.setId(5);
+		    dragon.setName("Dragon");
+		    dragon.setStats(new Stats(150, 15, 20, 18));
+		    dragon.setCurrentHealth(150);
+		    dragon.setMoves(List.of(
+		            MoveName.FIREBALL,
+		            MoveName.LIGHTNING_STRIKE,
+		            MoveName.HEAVY_STRIKE
+		    ));
+
+		    return List.of(goblin, mage, spider, orc, dragon);
 		}
 	    
 }
