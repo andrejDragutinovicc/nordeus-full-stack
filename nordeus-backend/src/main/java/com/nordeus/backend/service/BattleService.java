@@ -36,7 +36,7 @@ public class BattleService {
 	public StartDto start() {
 		StartDto start = new StartDto();
 		start.setHero(GameConfig.getStartingHero());
-		start.setMonsters(GameConfig.GetStartingMonsters());
+		start.setMonsters(GameConfig.getStartingMonsters());
 		
 		
 //		List<Move> m = new ArrayList<>(GameConfig.getMoves().values());

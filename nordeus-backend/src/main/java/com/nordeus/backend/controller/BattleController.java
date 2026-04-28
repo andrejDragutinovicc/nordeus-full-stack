@@ -2,6 +2,7 @@ package com.nordeus.backend.controller;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,7 +34,7 @@ public class BattleController {
 		return service.playMove(request);
 		
 	}
-    @PostMapping("/start")
+    @GetMapping("/start")
     public StartDto getStart(){
     	
     	return service.start();

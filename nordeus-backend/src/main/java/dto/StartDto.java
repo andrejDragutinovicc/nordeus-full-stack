@@ -2,6 +2,7 @@ package dto;
 
 import java.util.List;
 
+import model.Character;
 import model.Hero;
 import model.move.Move;
 
@@ -19,8 +20,8 @@ public class StartDto {
 	public List<Character> getMonsters() {
 		return monsters;
 	}
-	public void setMonsters(List<Character> monsters) {
-		this.monsters = monsters;
+	public void setMonsters(List<Character> list) {
+		this.monsters = list;
 	}
 	
 	
