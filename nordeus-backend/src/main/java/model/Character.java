@@ -104,7 +104,9 @@ public class Character {
 		
 		if(x-0.1>healtPersentage) {
 			List<Move> heal = m.stream().filter( p -> p.getMoveEffect()== MoveEffect.HEAL).collect(Collectors.toList());
-			
+			if (heal == null || heal.size()==0) {
+				heal =m ;
+			}
 			Random rand = new Random();
 			int index = rand.nextInt(heal.size());
 			rezultat =  heal.get(index);
@@ -118,6 +120,9 @@ public class Character {
 		}else {
 			List<Move> other = m.stream().filter( p -> p.getMoveEffect()!= MoveEffect.DAMAGE && p.getMoveEffect()!= MoveEffect.HEAL).collect(Collectors.toList());
 			Random rand = new Random();
+			if (other == null || other.size()==0) {
+				other =m ;
+			}
 			int index = rand.nextInt(other.size());
 			rezultat =  other.get(index);
 		}

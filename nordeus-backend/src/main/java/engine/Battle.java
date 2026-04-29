@@ -16,7 +16,7 @@ public class Battle {
 		System.out.println(bs.getMonster());
 		
 		Move monsterMove = bs.getMonster().calculateMove();
-		
+		rs.setBattleState(bs);
 		rs.addStep(applyMove(bs.getHero(),bs.getMonster(), heroMove));
 
 		if (bs.getMonster().getCurrentHealth() <= 0) {
@@ -28,7 +28,7 @@ public class Battle {
 //		List<BattleStep> p = bs.getHero().applyEffect();
 		
 		
-		rs.setBattleState(bs);
+		
 		
 		
 		return rs;

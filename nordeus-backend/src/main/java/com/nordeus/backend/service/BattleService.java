@@ -11,7 +11,9 @@ import dto.Response;
 import dto.StartDto;
 import engine.Battle;
 import engine.BattleState;
+import model.Hero;
 import model.move.Move;
+import model.move.MoveName;
 
 @Service
 public class BattleService {
@@ -42,6 +44,20 @@ public class BattleService {
 //		List<Move> m = new ArrayList<>(GameConfig.getMoves().values());
 		
 		return start;
-	}	
+	}
+
+	public Hero addMove(Hero h, MoveName m) {
+		
+		List<MoveName> l = h.getMoves();
+		if(l.contains(m)) {
+			throw new IllegalArgumentException();
+		}
+		else {
+			h.getMoves().add(m);
+			return h;
+		}
+
+	}
+
 	
 }

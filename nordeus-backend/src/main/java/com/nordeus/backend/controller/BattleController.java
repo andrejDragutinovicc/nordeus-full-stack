@@ -14,7 +14,9 @@ import dto.Request;
 import dto.Response;
 import dto.StartDto;
 import engine.BattleState;
+import model.Hero;
 import model.move.Move;
+import model.move.MoveName;
 
 @RestController
 @RequestMapping("/api/game")
@@ -39,6 +41,10 @@ public class BattleController {
     	
     	return service.start();
     	
+    }
+    @PostMapping("/add_move")
+    public Hero addMove(@RequestBody Hero h, @RequestBody MoveName m) {
+    	return service.addMove(h,m);
     }
 	
 }
