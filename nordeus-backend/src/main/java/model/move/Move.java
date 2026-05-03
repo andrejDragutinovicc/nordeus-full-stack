@@ -73,6 +73,14 @@ public class Move {
 	public void setDuration(int duration) {
 		this.duration = duration;
 	}
+
+
+
+	@Override
+	public String toString() {
+		return "Move [id=" + id + ", name=" + name + ", moveType=" + moveType.name() + ", moveEffect=" + moveEffect.name()
+				+ ", value=" + value + ", duration=" + duration + "]";
+	}
 	
 	
 

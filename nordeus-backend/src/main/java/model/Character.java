@@ -20,6 +20,7 @@ public class Character {
 	private Stats stats;
 	private int currentHealth;
 	private List<MoveName> moves;
+
 //	private List<Effects> effects;
 	
 	public double DeffensivePoints() {
@@ -77,7 +78,7 @@ public class Character {
 
 	public void loverHP(int rez) {
 
-		currentHealth = currentHealth - rez;
+		currentHealth -= rez;
 		
 	}
 //	public List<BattleStep> applyEffect() {
@@ -135,6 +136,23 @@ public class Character {
 	public String toString() {
 		return "Character [id=" + id + ", name=" + name + ", stats=" + stats + ", currentHealth=" + currentHealth
 				+ ", moves=" + moves + "]";
+	}
+
+	public int getHealCoef() {
+		// TODO Auto-generated method stub
+		return 1;
+	}
+
+	public void addHp(int rez) {
+		currentHealth+= rez;
+		
+	}
+
+	public MoveName getRandomMove() {
+		
+		Random rand = new Random();
+		int index = rand.nextInt(moves.size());
+		return moves.get(index);
 	}
 	
 

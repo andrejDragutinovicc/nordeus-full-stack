@@ -42,6 +42,10 @@ public class Stats {
 	public void setMagic(int magic) {
 		this.magic = magic;
 	}
+	@Override
+	public String toString() {
+		return "Stats [health=" + health + ", defense=" + defense + ", attack=" + attack + ", magic=" + magic + "]";
+	}
 	
 	
 
