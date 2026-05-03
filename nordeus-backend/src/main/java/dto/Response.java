@@ -14,8 +14,21 @@ public class Response {
 	private BattleState battleState;
 	private List<BattleStep> battleSteps = new ArrayList<BattleStep>();
 	private MoveName equippedMove;
+	private int lvlUp;
 	
 	
+	
+	
+
+	public int getLvlUp() {
+		return lvlUp;
+	}
+
+
+	public void setLvlUp(int lvlUp) {
+		this.lvlUp = lvlUp;
+	}
+
 
 	public MoveName getEquippedMove() {
 		return equippedMove;

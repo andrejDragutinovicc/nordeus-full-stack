@@ -2,6 +2,7 @@ package engine;
 
 import java.util.List;
 
+import config.GameConfig;
 import dto.Response;
 import model.Character;
 import model.Hero;
@@ -13,19 +14,36 @@ public class Battle {
 
 	public Response runMoves(BattleState bs, Move heroMove) {
 		Response rs = new Response();
-		System.out.println("Get hero : " + bs.getHero());
-		System.out.println("Get Monster : " + bs.getMonster());
-		System.out.println("Move: " + heroMove);
+//		System.out.println("Get hero : " + bs.getHero());
+//		System.out.println("Get Monster : " + bs.getMonster());
+//		System.out.println("Move: " + heroMove);
 
 		Move monsterMove = bs.getMonster().calculateMove();
 		rs.setBattleState(bs);
 		rs.addStep(applyMove(bs.getHero(), bs.getMonster(), heroMove));
+		
+		
+		bs.getHero().addXp(heroMove.getXp());
+		System.out.println("Move xp = "+ heroMove.getXp());
+		System.out.println("Hero Xp = " +  bs.getHero().getXp());
+		
+		if(bs.getHero().getXp() >= bs.getHero().getStats().getLvlUpXp()) {
+			int lvl = bs.getHero().lvlUp();
+			bs.getHero().setStats(GameConfig.getStats(lvl));
+			rs.setLvlUp(lvl);
+			
+			bs.getHero().addHp(bs.getHero().getHealCoef()*30);
+		}
+		
+		
+		
 
 		if (bs.getMonster().getCurrentHealth() <= 0) {
 			
 			MoveName nova = bs.getMonster().getRandomMove();
 			
 			bs.getHero().addMove(nova);
+			bs.getHero().setCurrentHealth(bs.getHero().getStats().getHealth());
 			
 			rs.setEquippedMove(nova);
 			
@@ -90,11 +108,10 @@ public class Battle {
 		int rez = 0;
 		if (move.getMoveType() == MoveType.PHYSICAL) {
 			rez = (int) ((attacker.AttackPoints() - deffrnder.DeffensivePoints()) * move.getValue());
-//			DODATI move.getValue u formulu
-//			deffrnder.setCourentHealth(deffrnder.getCourentHealth()-rez);
+
 		} else {
 			rez = (int) ((attacker.MagicDamage() - deffrnder.MagicResist()) * move.getValue());
-//			deffrnder.setCourentHealth(deffrnder.getCourentHealth()-rez);
+
 			System.out.println("Magic damage je : " + rez);
 		}
 		deffrnder.loverHP(rez);

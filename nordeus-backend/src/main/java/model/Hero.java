@@ -9,13 +9,17 @@ public class Hero extends Character{
 	
 	private int level;
 	private int xp;
-	private int upgradePoints;
+//	private int upgradePoints;
 	private List<MoveName> equippedMoves;
 	
 	
 	
 	
 	
+	@Override
+	public String toString() {
+		return "Hero [level=" + level + ", xp=" + xp + ", equippedMoves=" + equippedMoves + "]";
+	}
 	public List<MoveName> getEquippedMoves() {
 		return equippedMoves;
 	}
@@ -34,14 +38,24 @@ public class Hero extends Character{
 	public void setXp(int xp) {
 		this.xp = xp;
 	}
-	public int getUpgradePoints() {
-		return upgradePoints;
-	}
-	public void setUpgradePoints(int upgradePoints) {
-		this.upgradePoints = upgradePoints;
-	}
+//	public int getUpgradePoints() {
+//		return upgradePoints;
+//	}
+//	public void setUpgradePoints(int upgradePoints) {
+//		this.upgradePoints = upgradePoints;
+//	}
 	public void addMove(MoveName nova) {
 		equippedMoves.add(nova);
+	}
+	public void addXp(int xp2) {
+		xp += xp2;
+		
+	}
+	public int lvlUp() {
+		xp -= this.getStats().getLvlUpXp();
+		
+		
+		return level++;
 	}
 
 	

@@ -7,10 +7,29 @@ public class Stats {
 	private int attack;
 	private int magic;
 	
+	private int lvlUpXp;
 	
 	
 	
 	
+	
+	public Stats() {
+		
+	}
+	public Stats(int health, int defense, int attack, int magic, int lvlUpXp) {
+		super();
+		this.health = health;
+		this.defense = defense;
+		this.attack = attack;
+		this.magic = magic;
+		this.lvlUpXp = lvlUpXp;
+	}
+	public int getLvlUpXp() {
+		return lvlUpXp;
+	}
+	public void setLvlUpXp(int lvlUpXp) {
+		this.lvlUpXp = lvlUpXp;
+	}
 	public Stats(int health, int defense, int attack, int magic) {
 		super();
 		this.health = health;

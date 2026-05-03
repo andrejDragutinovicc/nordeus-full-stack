@@ -23,19 +23,21 @@ public class Character {
 
 //	private List<Effects> effects;
 	
+	
+//	implementirati
 	public double DeffensivePoints() {
 		return 0.5;
 	}
-	
+//	implementirati
 	public double MagicDamage() {
 		return 1;
 	}
-	
+//	implementirati
 	public double MagicResist() {
 		return 0.5;
 	}
 	
-	
+//	Imentirati
 	public double AttackPoints() {
 		return 2;
 	}

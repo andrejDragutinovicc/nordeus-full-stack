@@ -8,8 +8,36 @@ public class Move {
 	private MoveEffect moveEffect;
 	private int value;
 	
+	private int xp;
 	
 	
+	
+	
+	
+	public Move(int id, MoveName name, MoveType moveType, MoveEffect moveEffect, int value, int xp, int duration) {
+		this.id = id;
+		this.name = name;
+		this.moveType = moveType;
+		this.moveEffect = moveEffect;
+		this.value = value;
+		this.xp = xp;
+		this.duration = duration;
+	}
+
+
+
+	public int getXp() {
+		return xp;
+	}
+
+
+
+	public void setXp(int xp) {
+		this.xp = xp;
+	}
+
+
+
 	public MoveName getName() {
 		return name;
 	}
