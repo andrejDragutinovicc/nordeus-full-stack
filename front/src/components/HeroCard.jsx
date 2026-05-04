@@ -25,7 +25,7 @@ function HeroCard({ hero }) {
       </div>
       <HealthBar currentHp={hero.currentHp} maxHp={hero.hp} variant="hero" />
       {hero.stats?.lvlUpXp != null && (
-        <XpBar currentXp={hero.xp ?? 0} lvlUpXp={hero.stats.lvlUpXp} />
+        <XpBar currentXp={hero.xp ?? 0} lvlUpXp={hero.stats.lvlUpXp} maxLevel={hero.level >= 4} />
       )}
     </div>
   );

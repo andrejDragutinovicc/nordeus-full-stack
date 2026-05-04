@@ -309,6 +309,7 @@ function BattleScreen({
               <XpBar
                 currentXp={battleState.hero.xp ?? 0}
                 lvlUpXp={battleState.hero.stats.lvlUpXp}
+                maxLevel={battleState.hero.level >= 4}
               />
             )}
           </div>
