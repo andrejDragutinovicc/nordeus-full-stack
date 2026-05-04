@@ -15,16 +15,16 @@ public class GameConfig {
 
   
     private static final Stats[] LEVEL_STATS = {
-        new Stats(100,  8, 14, 10,  100),  // lvl 1
-        new Stats(130, 12, 20, 15,  220),  // lvl 2
-        new Stats(165, 17, 27, 20,  400),  // lvl 3
-        new Stats(210, 23, 36, 27,    0),  // lvl 4 (max)
+        new Stats(100,  8, 14, 10,  100),  // lvl 1 healt, def, att, mag
+        new Stats(130, 12, 20, 15,  150),  // lvl 2
+        new Stats(165, 17, 27, 20,  170),  // lvl 3  (new Stats(280, 24, 22, 20))
+        new Stats(210, 23, 36, 27,    Integer.MAX_VALUE),  // lvl 4 (max)
     };
 
     static {
      
         moves.put(MoveName.JUMP_STOMP,
-            new Move(1,  MoveName.JUMP_STOMP,      MoveType.PHYSICAL, MoveEffect.DAMAGE, 14,  8, 0));
+            new Move(1,  MoveName.JUMP_STOMP,      MoveType.PHYSICAL, MoveEffect.DAMAGE, 14,  15, 0));
         moves.put(MoveName.GROUND_POUND,
             new Move(2,  MoveName.GROUND_POUND,    MoveType.PHYSICAL, MoveEffect.DAMAGE, 22, 14, 0));
         moves.put(MoveName.SPIN_JUMP,
@@ -44,9 +44,9 @@ public class GameConfig {
         moves.put(MoveName.CLAW_SWIPE,
             new Move(10, MoveName.CLAW_SWIPE,      MoveType.PHYSICAL, MoveEffect.DAMAGE, 17, 10, 0));
 
-        // ── Magijski napadi ─────────────────────────────────────
+
         moves.put(MoveName.FIREBALL,
-            new Move(11, MoveName.FIREBALL,        MoveType.MAGIC,    MoveEffect.DAMAGE, 18, 12, 0));
+            new Move(11, MoveName.FIREBALL,        MoveType.MAGIC,    MoveEffect.DAMAGE, 18, 17, 0));
         moves.put(MoveName.TANOOKI_TAIL,
             new Move(12, MoveName.TANOOKI_TAIL,    MoveType.MAGIC,    MoveEffect.DAMAGE, 15,  9, 0));
         moves.put(MoveName.BOOMERANG_THROW,
@@ -62,7 +62,7 @@ public class GameConfig {
         moves.put(MoveName.MUSHROOM,
             new Move(17, MoveName.MUSHROOM,        MoveType.UTILITY,  MoveEffect.HEAL,   20,  20, 0));
         moves.put(MoveName.SUPER_MUSHROOM,
-            new Move(18, MoveName.SUPER_MUSHROOM,  MoveType.UTILITY,  MoveEffect.HEAL,   35,  20, 0));
+            new Move(18, MoveName.SUPER_MUSHROOM,  MoveType.UTILITY,  MoveEffect.HEAL,   28,  20, 0));
         moves.put(MoveName.ONE_UP,
             new Move(19, MoveName.ONE_UP,          MoveType.MAGIC,    MoveEffect.HEAL,   50,  20, 0));
     }
@@ -110,11 +110,11 @@ public class GameConfig {
 
     public static List<model.Character> getStartingMonsters() {
 
-        // 1. Goomba
+        // 1. Goomba  8, 14, 10
         Character goomba = new Character();
         goomba.setId(1);
         goomba.setName("Goomba");
-        goomba.setStats(new Stats(55, 4, 6, 0));
+        goomba.setStats(new Stats(55, 14, 16, 0));
         goomba.setCurrentHealth(55);
         goomba.setMoves(List.of(
             MoveName.SLIDE_KICK,
@@ -125,7 +125,7 @@ public class GameConfig {
         Character koopa = new Character();
         koopa.setId(2);
         koopa.setName("Koopa Troopa");
-        koopa.setStats(new Stats(80, 14, 8, 2));
+        koopa.setStats(new Stats(80, 25, 15, 8));
         koopa.setCurrentHealth(80);
         koopa.setMoves(List.of(
             MoveName.SHELL_TOSS,
@@ -136,8 +136,8 @@ public class GameConfig {
         Character piranha = new Character();
         piranha.setId(3);
         piranha.setName("Piranha Plant");
-        piranha.setStats(new Stats(100, 8, 10, 14));
-        piranha.setCurrentHealth(100);
+        piranha.setStats(new Stats(150, 20, 20, 14));
+        piranha.setCurrentHealth(150);
         piranha.setMoves(List.of(
             MoveName.POISON_SPIT,
             MoveName.BITE,
@@ -148,8 +148,8 @@ public class GameConfig {
         Character hammerBro = new Character();
         hammerBro.setId(4);
         hammerBro.setName("Hammer Bro");
-        hammerBro.setStats(new Stats(130, 12, 14, 6));
-        hammerBro.setCurrentHealth(130);
+        hammerBro.setStats(new Stats(190, 25, 24, 30));
+        hammerBro.setCurrentHealth(190);
         hammerBro.setMoves(List.of(
             MoveName.HAMMER_THROW,
             MoveName.GROUND_POUND,
@@ -160,7 +160,7 @@ public class GameConfig {
         Character bowser = new Character();
         bowser.setId(5);
         bowser.setName("Bowser");
-        bowser.setStats(new Stats(280, 24, 22, 20));
+        bowser.setStats(new Stats(280, 30, 30, 20));//  new Stats(210, 23, 36, 27,    Integer.MAX_VALUE),  // lvl 4 (max)
         bowser.setCurrentHealth(280);
         bowser.setMoves(List.of(
             MoveName.LAVA_BREATH,

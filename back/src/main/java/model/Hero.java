@@ -53,9 +53,7 @@ public class Hero extends Character{
 	}
 	public int lvlUp() {
 		xp -= this.getStats().getLvlUpXp();
-		
-		
-		return level++;
+		return ++level;
 	}
 
 	

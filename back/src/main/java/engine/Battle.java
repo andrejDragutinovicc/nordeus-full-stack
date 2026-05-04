@@ -32,7 +32,7 @@ public class Battle {
 			bs.getHero().setStats(GameConfig.getStats(lvl));
 			rs.setLvlUp(lvl);
 			
-			bs.getHero().addHp(bs.getHero().getHealCoef()*30);
+			bs.getHero().addHp((int)(bs.getHero().getHealCoef()*30));
 		}
 		
 		
@@ -96,7 +96,7 @@ public class Battle {
 
 	private int applyHEAL(Character attacker, Character deffrnder, Move move) {
 
-		int rez = (int) attacker.getHealCoef() * move.getValue();
+		int rez = (int) (attacker.getHealCoef() * move.getValue());
 
 		attacker.addHp(rez);
 		

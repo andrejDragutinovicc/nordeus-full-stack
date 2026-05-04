@@ -26,20 +26,20 @@ public class Character {
 	
 //	implementirati
 	public double DeffensivePoints() {
-		return 0.5;
+		return (double)stats.getDefense()/20;
 	}
 //	implementirati
 	public double MagicDamage() {
-		return 1;
+		return (double)stats.getMagic()/10;
 	}
 //	implementirati
 	public double MagicResist() {
-		return 0.5;
+		return (double)stats.getMagic()/20;
 	}
 	
 //	Imentirati
 	public double AttackPoints() {
-		return 2;
+		return (double)stats.getAttack()/10;
 	}
 	
 	
@@ -140,9 +140,9 @@ public class Character {
 				+ ", moves=" + moves + "]";
 	}
 
-	public int getHealCoef() {
-		// TODO Auto-generated method stub
-		return 1;
+	public double getHealCoef() {
+		double healtPersentage = (double)currentHealth/stats.getHealth();
+		return 0.5 + (1 - healtPersentage);
 	}
 
 	public void addHp(int rez) {
